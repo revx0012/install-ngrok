@@ -34,6 +34,7 @@ Alpine Linux
 FreeBSD (maybe?)
 
 
+
 Architecture:
 
 arm 
@@ -62,7 +63,10 @@ s390x
 
 
 
+
+
 for termux users, ngrok supports:
+
 
 arm64 (which is aarch64)
 
