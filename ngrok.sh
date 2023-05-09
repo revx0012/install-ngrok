@@ -1,37 +1,47 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
-clear
-
-ARCH=$(uname -m)
-
-echo -e "\033[36mYour architecture is $ARCH. Ngrok for $ARCH will be installed.\033[0m"
-read -rp "Are you sure you want to continue? [Y/n] " confirm
-
-if [[ "$confirm" == "" || "$confirm" == "y" || "$confirm" == "Y" ]]; then
-  if [[ "$ARCH" == "x86_64" ]]; then
-    URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
-  elif [[ "$ARCH" == "armv7l" ]]; then
-    URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip"
-  elif [[ "$ARCH" == "aarch64" ]]; then
-    URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip"
-  else
-    echo -e "\033[31mUnsupported architecture: $ARCH\033[0m"
+# Check if Termux is installed
+if [ ! -d "/data/data/com.termux/files/" ]; then
+    echo "Termux is not installed on this device."
     exit 1
-  fi
-
-  echo "Downloading Ngrok for $ARCH..."
-  pkg install curl zip unzip -y
-  curl -L $URL -o ngrok.zip
-  unzip ngrok.zip
-  rm ngrok.zip
-  
-  # moving ngrok to use it anywhere
-
-  mv ngrok /data/data/com.termux/files/usr/bin/
-  chmod +x /data/data/com.termux/files/usr/bin/ngrok
-  
-else
-  echo -e "\033[33mNgrok installation cancelled.\033[0m"
-  exit 1
 fi
 
+# Install required packages
+pkg install wget unzip -y
+
+# Check architecture and download appropriate ngrok package
+if [ "$(uname -m)" = "aarch64" ]; then
+    arch="arm64"
+elif [ "$(uname -m)" = "armv7l" ]; then
+    arch="arm"
+elif [ "$(uname -m)" = "aarch32" ]; then
+    arch="armhf"
+elif [ "$(uname -m)" = "x86_64" ]; then
+    arch="amd64"
+elif [ "$(uname -m)" = "i686" ]; then
+    arch="386"
+else
+    echo "Unsupported architecture: $(uname -m)"
+    exit 1
+fi
+
+echo "Your architecture is $arch. It will install ngrok $arch."
+read -p "Are you sure you want to continue? [Y/n]: " confirm
+if [[ $confirm =~ ^[nN]$ ]]; then
+    echo "Installation cancelled."
+    exit 1
+fi
+
+# Download and extract ngrok
+url="https://bin.equinox.io/c/4VmDzA7iaHb/$arch/ngrok-stable-linux-$arch.zip"
+echo "Downloading ngrok from $url ..."
+wget $url -P $HOME
+echo "Extracting ngrok ..."
+unzip $HOME/ngrok-stable-linux-$arch.zip -d $HOME
+rm $HOME/ngrok-stable-linux-$arch.zip
+
+# Move ngrok to /data/data/com.termux/files/usr/bin and make it executable
+mv $HOME/ngrok /data/data/com.termux/files/usr/bin
+chmod +x /data/data/com.termux/files/usr/bin/ngrok
+
+echo "Ngrok has been successfully installed! Type 'ngrok' to use it."
