@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Check system architecture
 ARCH=$(uname -m)
 
