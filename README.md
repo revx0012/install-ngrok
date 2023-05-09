@@ -27,17 +27,18 @@ Alpine Linux
 
 Architecture:
 
-arm or armhf (32-bit ARMv7 and ARMv8)
-arm64 (64-bit ARMv8)
-amd64 (64-bit x86)
-386 (32-bit x86)
-mips (MIPS 32-bit)
-mips64 (MIPS 64-bit)
-mips64le (MIPS 64-bit LE)
-mipsle (MIPS 32-bit LE)
-ppc64 (64-bit PowerPC)
-ppc64le (64-bit PowerPC LE)
-s390x (IBM System z)
+arm 
+armhf
+arm64
+amd64
+386
+mips
+mips64
+mips64le
+mipsle
+ppc64
+ppc64le
+s390x
 
 for termux users, ngrok supports:
 
