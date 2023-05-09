@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 ARCH=$(uname -m)
 
 echo -e "\033[36mYour architecture is $ARCH. Ngrok for $ARCH will be installed.\033[0m"
