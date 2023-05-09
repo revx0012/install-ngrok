@@ -18,28 +18,47 @@ for Linux users, ngrok supports:
 Distro or System:
 
 Ubuntu
+
 Debian
+
 CentOS
+
 Fedora
+
 Arch Linux
+
 Alpine Linux
+
 FreeBSD (maybe?)
 
 
 Architecture:
 
 arm 
+
 armhf
+
 arm64
+
 amd64
+
 386
+
 mips
+
 mips64
+
 mips64le
+
 mipsle
+
 ppc64
+
 ppc64le
+
 s390x
+
+
 
 for termux users, ngrok supports:
 
