@@ -44,9 +44,13 @@ s390x
 for termux users, ngrok supports:
 
 arm64 (which is aarch64)
+
 arm   (which includes armv71 and everything)
+
 aarch32 (which is armhf)
+
 x86_64 (which is amd64)
+
 i686 (which is 386)
 
 
