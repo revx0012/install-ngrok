@@ -90,3 +90,4 @@ mv $HOME/ngrok $PREFIX/bin
 chmod +x $PREFIX/bin/ngrok
 rm ngrok-v3-stable-linux-$architecture.tgz
 echo -e "\033[32mngrok has been installed!\033[0m"
+echo -e "\033[32use command 'ngrok' to use it!\033[0m"
