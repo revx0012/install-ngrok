@@ -1,44 +1,49 @@
 #!/bin/bash
 
-clear
-
-DISTRO=$(awk -F= '/^NAME/{print $2}' /etc/os-release | tr -d '"')
-
-if [[ "$DISTRO" == "Ubuntu" || "$DISTRO" == "Debian" || "$DISTRO" == "Linux Mint" ]]; then
-  echo "Detected Debian-based distribution. Installing Ngrok..."
-  sudo apt-get update
-  sudo apt-get install -y curl unzip
-elif [[ "$DISTRO" == "CentOS Linux" ]]; then
-  echo "Detected CentOS distribution. Installing Ngrok..."
-  sudo yum update
-  sudo yum install -y curl unzip
-elif [[ "$DISTRO" == "Fedora" ]]; then
-  echo "Detected Fedora distribution. Installing Ngrok..."
-  sudo dnf update
-  sudo dnf install -y curl unzip
-elif [[ "$DISTRO" == "Arch Linux" ]]; then
-  echo "Detected Arch Linux distribution. Installing Ngrok..."
-  sudo pacman -Syy
-  sudo pacman -S --noconfirm curl unzip
-else
-  echo "Unsupported distribution. Please install Ngrok manually."
-  exit 1
-fi
-
+# Check system architecture
 ARCH=$(uname -m)
-NGROK_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-$ARCH.zip"
-echo -e "\033[36mYour architecture is $ARCH. Downloading Ngrok for $ARCH...\033[0m"
-curl -sL $NGROK_URL -o ngrok.zip
 
-if [ -f ngrok.zip ]; then
-  echo -e "\033[32mNgrok downloaded successfully.\033[0m"
+if [ "$ARCH" = "x86_64" ]; then
+  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+  NGROK_DIR="ngrok-stable-linux-amd64"
+elif [ "$ARCH" = "armv7l" ]; then
+  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip"
+  NGROK_DIR="ngrok-stable-linux-arm"
+elif [ "$ARCH" = "aarch64" ]; then
+  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip"
+  NGROK_DIR="ngrok-stable-linux-arm64"
+elif [ "$ARCH" = "ppc64le" ]; then
+  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-ppc64le.zip"
+  NGROK_DIR="ngrok-stable-linux-ppc64le"
+elif [ "$ARCH" = "s390x" ]; then
+  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-s390x.zip"
+  NGROK_DIR="ngrok-stable-linux-s390x"
 else
-  echo -e "\033[33mDownload failed. Exiting...\033[0m"
+  echo "Unsupported architecture: $ARCH"
   exit 1
 fi
 
+# Check for package manager
+if [ -x "$(command -v pacman)" ]; then
+  sudo pacman -S unzip wget
+elif [ -x "$(command -v yum)" ]; then
+  sudo yum install unzip wget
+elif [ -x "$(command -v dnf)" ]; then
+  sudo dnf install unzip wget
+elif [ -x "$(command -v apt)" ]; then
+  sudo apt install wget unzip -y
+elif [ -x "$(command -v pkg)" ]; then
+  sudo pkg install wget unzip
+else
+  echo "Unsupported package manager"
+  exit 1
+fi
+
+# Download and install ngrok
+wget $DOWNLOAD_URL -O ngrok.zip
 unzip ngrok.zip
-sudo mv ngrok /bin
-sudo chmod +x /bin/ngrok
-rm ngrok.zip
-echo -e "\033[32mNgrok has been successfully installed! Type 'ngrok' to use it.\033[0m"
+sudo mv $NGROK_DIR/ngrok /usr/local/bin/ngrok
+sudo chmod +x /usr/local/bin/ngrok
+rm -rf ngrok.zip $NGROK_DIR
+
+echo "Ngrok has been successfully installed! Type 'ngrok' to use it."
