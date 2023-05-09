@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ $PREFIX == "/data/data/com.termux/files/usr" && $(uname -o) == "Android" ]]; then
+  echo ""
+else
+  echo -e "\033[31mNot using Termux on Android. Aborting...\033[0m"
+  exit 1
+fi
+
 clear
 echo "installing the requirements"
 pkg install wget tar
