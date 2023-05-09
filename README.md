@@ -70,7 +70,7 @@ for termux users, ngrok supports:
 
 arm64 (which is aarch64)
 
-arm   (which includes armv71 and everything)
+arm   (which includes armv6, armv7 and armv8 maybe armv9)
 
 aarch32 (which is armhf)
 
