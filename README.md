@@ -23,6 +23,7 @@ CentOS
 Fedora
 Arch Linux
 Alpine Linux
+FreeBSD (maybe?)
 
 
 Architecture:
