@@ -1,24 +1,28 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Check if Termux is installed
-if [ ! -d "/data/data/com.termux/files/" ]; then
-    echo "Termux is not installed on this device."
-    exit 1
-fi
+# ANSI escape codes for red text
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 
-# Install required packages
-pkg install wget unzip -y
+# Check if the operating system is Android
+if [[ "$(uname -o)" == "Android" ]]; then
+  # Check if the Termux app is installed
+  if [[ -d "$HOME/.termux" ]]; then
+    echo "Android and Termux detected."
+    # Install required packages
+    pkg install wget unzip -y
 
-# Check architecture and download appropriate ngrok package
-if [ "$(uname -m)" = "aarch64" ]; then
+  # Checks the Architecture to install the correct ngrok
+
+  if [ "$(uname -m)" = "aarch64" ]; then
     arch="arm64"
-elif [ "$(uname -m)" = "armv7l" ]; then
+  elif [ "$(uname -m)" = "armv7l" ]; then
     arch="arm"
-elif [ "$(uname -m)" = "aarch32" ]; then
+ elif [ "$(uname -m)" = "aarch32" ]; then
     arch="armhf"
-elif [ "$(uname -m)" = "x86_64" ]; then
+ elif [ "$(uname -m)" = "x86_64" ]; then
     arch="amd64"
-elif [ "$(uname -m)" = "i686" ]; then
+ elif [ "$(uname -m)" = "i686" ]; then
     arch="386"
 else
     echo "Unsupported architecture: $(uname -m)"
@@ -45,3 +49,13 @@ mv $HOME/ngrok /data/data/com.termux/files/usr/bin
 chmod +x /data/data/com.termux/files/usr/bin/ngrok
 
 echo "Ngrok has been successfully installed! Type 'ngrok' to use it."
+
+  else
+    echo -e "${RED}The Termux app is not installed.${NC}"
+    exit 1
+  fi
+
+else
+  echo -e "${RED}This script is meant to be run on Android with Termux.${NC}"
+  exit 1
+fi
