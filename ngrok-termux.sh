@@ -82,7 +82,9 @@ done
 echo -e "\033[33mInstalling ngrok...\033[0m"
 link="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-$architecture.tgz"
 wget -q --show-progress $link
+
 echo -e "\033[33mSetting up the ngrok...\033[0m"
+
 tar -xf ngrok-v3-stable-linux-$architecture.tgz
 mv $HOME/ngrok $PREFIX/bin
 chmod +x $PREFIX/bin/ngrok
