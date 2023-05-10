@@ -1,11 +1,7 @@
-# Installing ngrok on termux
+# Installing ngrok with termux & linux
 
-```wget https://raw.githubusercontent.com/revx0012/install-ngrok/main/ngrok-termux.sh && bash ngrok-termux.sh```
-
-
-# Installing ngrok on actual linux
-
-```wget https://raw.githubusercontent.com/revx0012/install-ngrok/main/ngrok-linux.sh && bash ngrok-linux.sh```
+```wget https://raw.githubusercontent.com/revx0012/install-ngrok/main/install.sh
+bash install.sh```
 
 # having errors?
 
