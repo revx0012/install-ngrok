@@ -38,7 +38,6 @@ EOF
   echo -e "\033[36m[7]\033[0m Delete ngrok"
   echo -e "\033[36m[8]\033[0m Setup ngrok authtoken"
   
-  
   read -p "Enter your choice: " choice
   echo ""
   
@@ -78,14 +77,18 @@ EOF
       fi
       ;;
     8)
-     if [ -f "$PREFIX/bin/ngrok" ]; then
-     read -p "Enter your ngrok authtoken: " authtoken
-    echo "$authtoken" >> $HOME/.ngrok2/ngrok.yml
-  echo -e "\033[32mngrok authtoken is set up!\033[0m"
-else
-echo -e "\033[31mYou didn't install ngrok.\033[0m\n"
-read -p "Press enter to continue..."
-   ;;
+      if [ -f "$PREFIX/bin/ngrok" ]; then
+        read -p "Enter your ngrok authtoken: " authtoken
+        echo "$authtoken" >> $HOME/.ngrok2/ngrok
+              if [ -f "$PREFIX/bin/ngrok" ]; then
+        read -p "Enter your ngrok authtoken: " authtoken
+        echo "$authtoken" >> $HOME/.ngrok2/ngrok.yml
+        echo -e "\033[32mngrok authtoken is set up!\033[0m"
+      else
+        echo -e "\033[31mYou didn't install ngrok.\033[0m\n"
+        read -p "Press enter to continue..."
+      fi
+      ;;
     *)
       echo -e "\033[31mInvalid choice. Please try again.\033[0m\n"
       ;;
@@ -96,10 +99,10 @@ echo -e "\033[33mInstalling ngrok...\033[0m"
 link="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-$architecture.tgz"
 wget -q --show-progress $link
 
-echo -e "\033[33mSetting up the ngrok...\033[0m"
+echo -e "\033[33mSetting up ngrok...\033[0m"
 
 tar -xf ngrok-v3-stable-linux-$architecture.tgz
 mv $HOME/ngrok $PREFIX/bin
 chmod +x $PREFIX/bin/ngrok
 rm ngrok-v3-stable-linux-$architecture.tgz
-echo -e "\033[32mngrok has been installed! use command ngrok to use it.\033[0m"
+echo -e "\033[32mngrok has been installed! Use the command 'ngrok' to use it.\033[0m"
