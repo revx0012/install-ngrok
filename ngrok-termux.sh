@@ -9,7 +9,7 @@ fi
 
 clear
 echo "installing the requirements"
-pkg install wget tar
+pkg install tar -y
 clear
 
 while true; do
