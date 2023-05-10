@@ -45,7 +45,6 @@ fi
 wget $DOWNLOAD_URL -O ngrok.zip
 unzip ngrok.zip
 sudo mv $NGROK_DIR/ngrok /bin
-sudo chmod +x /bin/ngrok
 rm -rf ngrok.zip $NGROK_DIR
 
 echo "Ngrok has been successfully installed! Type 'ngrok' to use it."
