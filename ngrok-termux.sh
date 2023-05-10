@@ -36,6 +36,8 @@ EOF
   echo -e "\033[36m[5]\033[0m Check current architecture"
   echo -e "\033[36m[6]\033[0m Exit"
   echo -e "\033[36m[7]\033[0m Delete ngrok"
+  echo -e "\033[36m[8]\033[0m Setup ngrok authtoken"
+  
   
   read -p "Enter your choice: " choice
   echo ""
@@ -74,6 +76,23 @@ EOF
         echo -e "\e[31mNgrok not found in $PREFIX/bin/ngrok! exiting...\e[0m"
         exit
       fi
+      ;;
+    8)
+     if [ -f "$PREFIX/bin/ngrok" ]; then
+        read -p "Enter your ngrok authtoken: " authtoken
+        echo "Verifying authtoken..."
+        ngrok_output=$(echo "$authtoken" | ngrok authtoken -config "$HOME/.ngrok2/ngrok.yml" -)
+        if [[ $ngrok_output =~ success ]]; then
+          ngrok config add-authtoken "$authtoken"
+          echo -e "\033[32mngrok authtoken is set up!\033[0m"
+          read -p "Press enter to continue..."
+          continue
+        else
+          echo -e "\033[31mInvalid authtoken. Please try again.\033[0m"
+          read -p "Press enter to continue..."
+        fi
+      else
+        echo -e "\033[31mSorry, but you have not installed ngrok, please install and try again.\033[0
       ;;
     *)
       echo -e "\033[31mInvalid choice. Please try again.\033[0m\n"
