@@ -110,4 +110,4 @@ tar -xf ngrok-v3-stable-linux-$architecture.tgz
 mv $HOME/ngrok $PREFIX/bin
 chmod +x $PREFIX/bin/ngrok
 rm ngrok-v3-stable-linux-$architecture.tgz
-echo -e "\033[32mngrok has been installed! use command 'ngrok' to use it\033[0m"
+echo -e "\033[32mngrok has been installed! use command 'ngrok' to use it.\033[0m"
