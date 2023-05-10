@@ -44,7 +44,7 @@ fi
 # Download and install ngrok
 wget $DOWNLOAD_URL -O ngrok.zip
 unzip ngrok.zip
-sudo mv $NGROK_DIR/ngrok /usr/local/bin/ngrok
+sudo mv $NGROK_DIR/ngrok /bin
 sudo chmod +x /usr/local/bin/ngrok
 rm -rf ngrok.zip $NGROK_DIR
 
