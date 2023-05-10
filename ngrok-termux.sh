@@ -79,9 +79,6 @@ EOF
     8)
       if [ -f "$PREFIX/bin/ngrok" ]; then
         read -p "Enter your ngrok authtoken: " authtoken
-        echo "$authtoken" >> $HOME/.ngrok2/ngrok
-              if [ -f "$PREFIX/bin/ngrok" ]; then
-        read -p "Enter your ngrok authtoken: " authtoken
         echo "$authtoken" >> $HOME/.ngrok2/ngrok.yml
         echo -e "\033[32mngrok authtoken is set up!\033[0m"
       else
