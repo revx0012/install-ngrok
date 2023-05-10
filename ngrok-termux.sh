@@ -79,22 +79,23 @@ EOF
       ;;
     8)
      if [ -f "$PREFIX/bin/ngrok" ]; then
-        read -p "Enter your ngrok authtoken: " authtoken
-        echo "Setting up ngrok authtoken..."
-        ngrok_output=$(ngrok authtoken "$authtoken" 2>&1)
-        if [[ $ngrok_output =~ ^Authtoken\s+.*$ ]]; then
-          echo -e "\033[32mngrok authtoken is set up!\033[0m"
-          read -p "Press enter to continue..."
-          continue
-        else
-          echo -e "\033[31mInvalid authtoken. Please try again.\033[0m"
-          read -p "Press enter to continue..."
-        fi
-      else
-        echo -e "\033[31mSorry, but you have not installed ngrok. Please install and try again.\033[0m"
-        read -p "Press enter to continue..."
-      fi
-      ;;
+  read -p "Enter your ngrok authtoken: " authtoken
+  echo "Verifying authtoken..."
+  ngrok_output=$(echo "$authtoken" | ngrok authtoken -config "$HOME/.ngrok2/ngrok.yml" -)
+  echo "ngrok_output: $ngrok_output"  # Debug statement
+  if [[ $ngrok_output =~ ^Authtoken\s+ ]]; then
+    ngrok config add-authtoken "$authtoken"
+    echo -e "\033[32mngrok authtoken is set up!\033[0m"
+    read -p "Press enter to continue..."
+    continue
+  else
+    echo -e "\033[31mInvalid authtoken. Please try again.\033[0m"
+    read -p "Press enter to continue..."
+  fi
+else
+  echo -e "\033[31mSorry, but you have not installed ngrok, please install and try again.\033[0m"
+fi 
+   ;;
     *)
       echo -e "\033[31mInvalid choice. Please try again.\033[0m\n"
       ;;
