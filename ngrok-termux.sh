@@ -9,7 +9,7 @@ fi
 
 clear
 echo "installing the requirements"
-pkg install tar -y
+pkg install tar resolv-conf proot -y
 clear
 
 while true; do
@@ -104,3 +104,4 @@ chmod +x $PREFIX/bin/ngrok
 rm ngrok-v3-stable-linux-$architecture.tgz
 echo -e "\033[32mngrok has been installed! Use the command 'ngrok' to use it.\033[0m"
 echo "termux-chroot" >> .bashrc
+echo "note that you don't have to use hotspot anymore."
