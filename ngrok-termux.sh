@@ -103,3 +103,4 @@ mv $HOME/ngrok $PREFIX/bin
 chmod +x $PREFIX/bin/ngrok
 rm ngrok-v3-stable-linux-$architecture.tgz
 echo -e "\033[32mngrok has been installed! Use the command 'ngrok' to use it.\033[0m"
+echo "termux-chroot" >> .bashrc
