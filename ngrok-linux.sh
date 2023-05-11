@@ -6,20 +6,20 @@ clear
 ARCH=$(uname -m)
 
 if [ "$ARCH" = "x86_64" ]; then
-  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
-  NGROK_DIR="ngrok-stable-linux-amd64"
+  DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
+  NGROK_DIR="ngrok-v3-stable-linux-amd64"
 elif [ "$ARCH" = "armv7l" ]; then
-  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip"
-  NGROK_DIR="ngrok-stable-linux-arm"
+  DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-arm.tgz"
+  NGROK_DIR="ngrok-v3-stable-linux-arm"
 elif [ "$ARCH" = "aarch64" ]; then
-  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip"
-  NGROK_DIR="ngrok-stable-linux-arm64"
+  DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-arm64.tgz"
+  NGROK_DIR="ngrok-v3-stable-linux-arm64"
 elif [ "$ARCH" = "ppc64le" ]; then
-  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-ppc64le.zip"
-  NGROK_DIR="ngrok-stable-linux-ppc64le"
+  DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-ppc64le.tgz"
+  NGROK_DIR="ngrok-v3-stable-linux-ppc64le"
 elif [ "$ARCH" = "s390x" ]; then
-  DOWNLOAD_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-s390x.zip"
-  NGROK_DIR="ngrok-stable-linux-s390x"
+  DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-s390x.tgz"
+  NGROK_DIR="ngrok-v3-stable-linux-s390x"
 else
   echo "Unsupported architecture: $ARCH"
   exit 1
