@@ -98,9 +98,14 @@ wget -q --show-progress $link
 
 echo -e "\033[33mSetting up ngrok...\033[0m"
 
+sleep 2
+
 tar -xf ngrok-v3-stable-linux-$architecture.tgz
 mv $HOME/ngrok $PREFIX/bin
 chmod +x $PREFIX/bin/ngrok
 rm ngrok-v3-stable-linux-$architecture.tgz
+
+sleep 1
+
 echo -e "\033[32mngrok has been installed! Use the command 'ngrok' to use it.\033[0m"
 echo "im here to say that if you want to use ngrok with no hotspot, use command 'termux-chroot' before using ngrok. it will work!"
