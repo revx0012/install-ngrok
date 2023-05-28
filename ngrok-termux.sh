@@ -8,6 +8,7 @@ else
 fi
 
 echo "fixing warning when you install ngrok..."
+sleep 2
 USERNAME=$(whoami)
 
 if grep -q "export USER=$USERNAME" "$HOME/.zshrc" || grep -q "export USER=$USERNAME" "$HOME/.bashrc"; then
