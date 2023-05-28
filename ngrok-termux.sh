@@ -7,16 +7,14 @@ else
   exit 1
 fi
 
+USERNAME=$(whoami)
 
-if [[ "$USER" == $(whoami) ]; then
-echo ""
-
-elif [ -f "$HOME/.zshrc" ]; then
- echo "export USER=($whoami)" >> $HOME/.zshrc
-source ~/.zshrc
-else
- echo "export USER=($whoami)" >> $HOME/.bashrc
+if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
+    echo "export USER=$USERNAME" >> ~/.zshrc
+elif [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/bash" ]]; then
+    echo "export USER=$USERNAME" >> ~/.bashrc
 fi
+
 
 clear
 echo "installing the requirements..."
