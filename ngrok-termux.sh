@@ -7,6 +7,10 @@ else
   exit 1
 fi
 
+if [[ "$USER" == $USERNAME ]]; then
+:
+fi
+
 echo "fixing warning when you install ngrok..."
 sleep 2
 USERNAME=$(whoami)
