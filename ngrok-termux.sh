@@ -24,7 +24,7 @@ while true; do
           __/ |               
          |___/ 
 
-  Coded  by Ron144#1491              
+  Coded by Ron144#1491              
 EOF
   echo -e "\n\033[0m"
   
