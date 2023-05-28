@@ -129,13 +129,13 @@ if [ -f "$PREFIX/bin/ngrok" ]; then
     echo -e "\033[32mNgrok has been deleted.\033[0m"
   elif [[ "$delete" == "n" ]]; then
     echo -e "\033[31mSorry, but we can't continue the installation if you don't remove it.\033[0m\n"
- exit 1
+    exit 1
   else
     echo -e "\033[31mInvalid choice. Exiting...\033[0m"
- exit 1
+    exit 1
   fi
-else
 fi
+
 
 echo -e "\033[33mInstalling ngrok...\033[0m"
 link="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-$architecture.tgz"
