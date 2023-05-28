@@ -79,7 +79,7 @@ elif [ -f "$HOME/ngrok" ]; then
   echo -e "\e[32mDeleted ngrok file in $HOME/\e[0m"
 else
   echo -e "\e[31mNgrok not found in Bin folder or Home directory! exiting...\e[0m"
-  exit
+  exit 1
       fi
       ;;
     8)
