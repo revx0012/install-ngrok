@@ -121,10 +121,20 @@ else
 done
 
 if [ -f "$PREFIX/bin/ngrok" ]; then
-echo -e "\033[33mYou already installed ngrok, exitting...\033[0m"
-exit 1
+  echo -e "\033[33mYou already installed ngrok. Do you want to delete ngrok? (y/n)\033[0m"
+  read delete
+
+  if [[ "$delete" == "y" ]]; then
+    rm "$PREFIX/bin/ngrok"
+    echo -e "\033[32mNgrok has been deleted.\033[0m"
+  elif [[ "$delete" == "n" ]]; then
+    echo -e "\033[31mSorry, but we can't continue the installation if you don't remove it.\033[0m\n"
+ exit 1
+  else
+    echo -e "\033[31mInvalid choice. Exiting...\033[0m"
+ exit 1
+  fi
 else
-echo ""
 fi
 
 echo -e "\033[33mInstalling ngrok...\033[0m"
@@ -147,3 +157,6 @@ echo "im here to say that if you want to use ngrok with no hotspot, use command 
 echo -e "\033[33mMade by Ron144#1491\033[0m"
 echo "to get your authtoken, please visit: https://ngrok.com"
 echo "don't worry, it's free!"
+
+
+
