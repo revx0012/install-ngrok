@@ -7,12 +7,18 @@ else
   exit 1
 fi
 
+echo "fixing warning when you install ngrok..."
 USERNAME=$(whoami)
 
-if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
-    echo "export USER=$USERNAME" >> ~/.zshrc
-elif [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/bash" ]]; then
-    echo "export USER=$USERNAME" >> ~/.bashrc
+if grep -q "export USER=$USERNAME" "$HOME/.zshrc" || grep -q "export USER=$USERNAME" "$HOME/.bashrc"; then
+    # The line already exists in either .zshrc or .bashrc. No changes made.
+    :
+else
+    if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
+        echo "export USER=$USERNAME" >> "$HOME/.zshrc"
+    elif [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/bash" ]]; then
+        echo "export USER=$USERNAME" >> "$HOME/.bashrc"
+    fi
 fi
 
 
