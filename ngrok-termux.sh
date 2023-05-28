@@ -7,8 +7,19 @@ else
   exit 1
 fi
 
+
+if [[ "$USER" == $(whoami) ]; then
+echo ""
+
+elif [ -f "$HOME/.zshrc" ]; then
+ echo "export USER=($whoami)" >> $HOME/.zshrc
+source ~/.zshrc
+else
+ echo "export USER=($whoami)" >> $HOME/.bashrc
+fi
+
 clear
-echo "installing the requirements"
+echo "installing the requirements..."
 pkg install tar resolv-conf proot -y
 clear
 
