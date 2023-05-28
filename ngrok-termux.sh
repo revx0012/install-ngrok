@@ -67,13 +67,19 @@ EOF
       exit
       ;;
     7)
-      echo -e "\e[33mSearching for ngrok in $PREFIX/bin/ngrok\e[0m"
-      if [ -f "$PREFIX/bin/ngrok" ]; then
-        rm "$PREFIX/bin/ngrok"
-        echo -e "\e[32mDeleted ngrok file in $PREFIX/bin/\e[0m"
-      else
-        echo -e "\e[31mNgrok not found in $PREFIX/bin/ngrok! exiting...\e[0m"
-        exit
+      echo -e "\e[33mSearching for ngrok in $PREFIX/bin/\e[0m"
+sleep 1
+echo -e "\e[33mSearching for ngrok in $HOME/\e[0m"
+sleep 1
+if [ -f "$PREFIX/bin/ngrok" ]; then
+  rm $PREFIX/bin/ngrok
+  echo -e "\e[32mDeleted ngrok file in $PREFIX/bin/\e[0m"
+elif [ -f "$HOME/ngrok" ]; then
+  rm $HOME/ngrok
+  echo -e "\e[32mDeleted ngrok file in $HOME/\e[0m"
+else
+  echo -e "\e[31mNgrok not found in Bin folder or Home directory! exiting...\e[0m"
+  exit
       fi
       ;;
     8)
