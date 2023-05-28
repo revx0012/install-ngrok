@@ -17,8 +17,10 @@ if grep -q "export USER=$USERNAME" "$HOME/.zshrc" || grep -q "export USER=$USERN
 else
     if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
         echo "export USER=$USERNAME" >> "$HOME/.zshrc"
+       source ~/.zshrc
     elif [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/bash" ]]; then
         echo "export USER=$USERNAME" >> "$HOME/.bashrc"
+      bash
     fi
 fi
 
