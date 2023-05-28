@@ -132,3 +132,5 @@ sleep 1
 echo -e "\033[32mngrok has been installed! Use the command 'ngrok' to use it.\033[0m"
 echo "im here to say that if you want to use ngrok with no hotspot, use command 'termux-chroot' before using ngrok. it will work!"
 echo -e "\033[33mMade by Ron144#1491\033[0m"
+echo "to get your authtoken, please visit: https://ngrok.com"
+echo "don't worry, it's free!"
