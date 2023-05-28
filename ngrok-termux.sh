@@ -45,7 +45,7 @@ EOF
   echo -e "\n\033[0m"
   
   echo -e "\033[36mPlease choose your architecture:\033[0m"
-  echo -e "\033[36m[1]\033[0m arm (armv6, armv7, and armv8.)"
+  echo -e "\033[36m[1]\033[0m arm (armv6, armv7, armv7 and armv71)"
   echo -e "\033[36m[2]\033[0m aarch64"
   echo -e "\033[36m[3]\033[0m x86_64"
   echo -e "\033[36m[4]\033[0m i686 (or i386)"
