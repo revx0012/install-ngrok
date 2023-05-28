@@ -120,6 +120,13 @@ else
   esac
 done
 
+if [ -f "$PREFIX/bin/ngrok" ]; then
+echo -e "\033[33mYou already installed ngrok, exitting...\033[0m"
+exit 1
+else
+echo ""
+fi
+
 echo -e "\033[33mInstalling ngrok...\033[0m"
 link="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-$architecture.tgz"
 wget -q --show-progress $link
