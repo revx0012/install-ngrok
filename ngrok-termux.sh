@@ -7,9 +7,7 @@ else
   exit 1
 fi
 
-if [[ "$USER" == $USERNAME ]]; then
-:
-fi
+clear
 
 echo "fixing warning when you install ngrok..."
 sleep 2
