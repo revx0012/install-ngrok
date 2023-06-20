@@ -29,7 +29,7 @@ fi
 
 clear
 echo "installing the requirements..."
-pkg install tar resolv-conf proot -y &>/dev/null
+pkg install tar resolv-conf proot -y
 clear
 
 while true; do
@@ -107,7 +107,7 @@ else
     8)
       if [ -f "$PREFIX/bin/ngrok" ]; then
         read -p "Enter your ngrok authtoken: " authtoken
-        ngrok config add-authtoken $authtoken &>/dev/null
+        ngrok config add-authtoken $authtoken
         echo -e "\033[32mngrok authtoken is set up!\033[0m"
       else
         echo -e "\033[31mYou didn't install ngrok.\033[0m\n"
