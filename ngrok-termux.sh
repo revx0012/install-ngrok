@@ -14,40 +14,38 @@ sleep 2
 USERNAME=$(whoami)
 
 if grep -q "export USER=$USERNAME" "$HOME/.zshrc" || grep -q "export USER=$USERNAME" "$HOME/.bashrc"; then
-    
-    :
+  :
 else
-    if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
-        echo "export USER=$USERNAME" >> "$HOME/.zshrc"
-       source ~/.zshrc
-    elif [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/bash" ]]; then
-        echo "export USER=$USERNAME" >> "$HOME/.bashrc"
-      bash
-    fi
+  if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
+    echo "export USER=$USERNAME" >> "$HOME/.zshrc"
+    source ~/.zshrc
+  elif [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/bash" ]]; then
+    echo "export USER=$USERNAME" >> "$HOME/.bashrc"
+    bash
+  fi
 fi
-
 
 clear
 echo "installing the requirements..."
-pkg install tar resolv-conf proot -y
+pkg install tar resolv-conf proot -y &>/dev/null
 clear
 
 while true; do
   echo -e "\033[36m"
   cat << "EOF"
-   _   _                 _    
-  | \ | |               | |   
+   _   _                 _
+  | \ | |               | |
   |  \| | __ _ _ __ ___ | | __
   | . ` |/ _` | '__/ _ \| |/ /
-  | |\  | (_| | | | (_) |   < 
+  | |\  | (_| | | | (_) |   <
   |_| \_|\__, |_|  \___/|_|\_\
-          __/ |               
-         |___/ 
+          __/ |
+         |___/
 
-  Coded by Ron144#1491              
+   Coded by Ron144#1491
 EOF
   echo -e "\n\033[0m"
-  
+
   echo -e "\033[36mPlease choose your architecture:\033[0m"
   echo -e "\033[36m[1]\033[0m arm (armv6, armv7, armv8 and armv71)"
   echo -e "\033[36m[2]\033[0m aarch64"
@@ -57,10 +55,10 @@ EOF
   echo -e "\033[36m[6]\033[0m Exit"
   echo -e "\033[36m[7]\033[0m Delete ngrok"
   echo -e "\033[36m[8]\033[0m Setup ngrok authtoken"
-  
+
   read -p "Enter your choice: " choice
   echo ""
-  
+
   case $choice in
     1)
       architecture="arm"
@@ -88,20 +86,20 @@ EOF
       ;;
     7)
       echo -e "\e[33mSearching for ngrok in $PREFIX/bin/\e[0m"
-sleep 1
-echo -e "\e[33mSearching for ngrok in $HOME/\e[0m"
-sleep 1
-if [ -f "$PREFIX/bin/ngrok" ]; then
-  rm $PREFIX/bin/ngrok
-  echo -e "\e[32mDeleted ngrok file in $PREFIX/bin/\e[0m"
-  rm -rf $HOME/.config/ngrok
-elif [ -f "$HOME/ngrok" ]; then
-  rm $HOME/ngrok
-  echo -e "\e[32mDeleted ngrok file in $HOME/\e[0m"
-  rm -rf $HOME/.config/ngrok
-else
-  echo -e "\e[31mNgrok not found in Bin folder or Home directory! exiting...\e[0m"
-  exit 1
+      sleep 1
+      echo -e "\e[33mSearching for ngrok in $HOME/\e[0m"
+      sleep 1
+      if [ -f "$PREFIX/bin/ngrok" ]; then
+        rm $PREFIX/bin/ngrok
+        echo -e "\e[32mDeleted ngrok file in $PREFIX/bin/\e[0m"
+        rm -rf $HOME/.config/ngrok
+      elif [ -f "$HOME/ngrok" ]; then
+        rm $HOME/ngrok
+        echo -e "\e[32mDeleted ngrok file in $HOME/\e[0m"
+        rm -rf $HOME/.config/ngrok
+      else
+        echo -e "\e[31mNgrok not found in Bin folder or Home directory! exiting...\e[0m"
+        exit 1
       fi
       ;;
     8)
@@ -136,7 +134,6 @@ if [ -f "$PREFIX/bin/ngrok" ]; then
   fi
 fi
 
-
 echo -e "\033[33mInstalling ngrok...\033[0m"
 link="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-$architecture.tgz"
 wget -q --show-progress $link
@@ -157,6 +154,3 @@ echo "im here to say that if you want to use ngrok with no hotspot, use command 
 echo "to get your authtoken, please visit: https://ngrok.com"
 echo "don't worry, it's free!"
 echo -e "\033[33mMade by Ron144#1491\033[0m"
-
-
-
