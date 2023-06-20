@@ -14,7 +14,7 @@ sleep 2
 USERNAME=$(whoami)
 
 if grep -q "export USER=$USERNAME" "$HOME/.zshrc" || grep -q "export USER=$USERNAME" "$HOME/.bashrc"; then
-    # The line already exists in either .zshrc or .bashrc. No changes made.
+    
     :
 else
     if [[ "$SHELL" == "/data/data/com.termux/files/usr/bin/zsh" ]]; then
@@ -29,7 +29,7 @@ fi
 
 clear
 echo "installing the requirements..."
-pkg install tar resolv-conf proot -y
+pkg install tar resolv-conf proot -y &>/dev/null
 clear
 
 while true; do
@@ -94,9 +94,11 @@ sleep 1
 if [ -f "$PREFIX/bin/ngrok" ]; then
   rm $PREFIX/bin/ngrok
   echo -e "\e[32mDeleted ngrok file in $PREFIX/bin/\e[0m"
+  rm -rf $HOME/.config/ngrok
 elif [ -f "$HOME/ngrok" ]; then
   rm $HOME/ngrok
   echo -e "\e[32mDeleted ngrok file in $HOME/\e[0m"
+  rm -rf $HOME/.config/ngrok
 else
   echo -e "\e[31mNgrok not found in Bin folder or Home directory! exiting...\e[0m"
   exit 1
@@ -105,7 +107,7 @@ else
     8)
       if [ -f "$PREFIX/bin/ngrok" ]; then
         read -p "Enter your ngrok authtoken: " authtoken
-        ngrok config add-authtoken $authtoken
+        ngrok config add-authtoken $authtoken &>/dev/null
         echo -e "\033[32mngrok authtoken is set up!\033[0m"
       else
         echo -e "\033[31mYou didn't install ngrok.\033[0m\n"
