@@ -42,7 +42,7 @@ while true; do
           __/ |
          |___/
 
-   Coded by Ron144
+   Coded by Ron144/RevX
 EOF
   echo -e "\n\033[0m"
 
