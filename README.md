@@ -1,12 +1,10 @@
 # Installing ngrok with Termux & Linux
 
-```
-wget https://raw.githubusercontent.com/revx0012/install-ngrok/main/install.sh && bash install.sh```
+```wget https://raw.githubusercontent.com/revx0012/install-ngrok/main/install.sh && bash install.sh```
 
 Or with curl:
 
-```
-curl -O https://raw.githubusercontent.com/revx0012/install-ngrok/main/install.sh && bash install.sh```
+```curl -O https://raw.githubusercontent.com/revx0012/install-ngrok/main/install.sh && bash install.sh```
 
 # Termux
 ![](termux.png)
