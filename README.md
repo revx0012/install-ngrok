@@ -10,7 +10,7 @@ Or with curl:
 ![](termux.png)
 
 Linux, well it's not the same thing as termux so i can't show you.
-(you can try the linux if you want though)
+(you can try the linux if you want though but you must be in linux not termux so you can try it)
 
 
 # Wiki
