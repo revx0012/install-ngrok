@@ -15,4 +15,4 @@ Linux, well it's not the same thing as termux so i can't show you.
 
 # Wiki
 
-If you maybe had a question or somethine, You can check out my [Wiki](https://github.com/revx0012/install-ngrok/wiki).
+If you maybe had a question or something, You can check out my [Wiki](https://github.com/revx0012/install-ngrok/wiki).
