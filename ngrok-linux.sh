@@ -5,6 +5,9 @@
 if [[ $(uname -o) == "Android" && $(command -v termux-info) ]]; then
 echo -e "\033[31mMust be in linux. Aborting...\033[0m" 
    exit 1
+else
+   echo ""
+fi
 
 clear
 
