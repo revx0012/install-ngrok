@@ -9,7 +9,7 @@ fi
 
 clear
 
-echo "fixing warning when you install ngrok..."
+echo "Fixing warning when you install ngrok..."
 sleep 2
 USERNAME=$(whoami)
 
@@ -26,7 +26,7 @@ else
 fi
 
 clear
-echo "installing the requirements..."
+echo "Installing the requirements..."
 pkg install tar resolv-conf proot -y &>/dev/null
 clear
 
@@ -150,7 +150,7 @@ rm ngrok-v3-stable-linux-$architecture.tgz
 sleep 1
 
 echo -e "\033[32mngrok has been installed! Use the command 'ngrok' to use it.\033[0m"
-echo "im here to say that if you want to use ngrok with no hotspot, use command 'termux-chroot' before using ngrok. it will work!"
-echo "to get your authtoken, please visit: https://ngrok.com"
-echo "don't worry, it's free!"
+echo "Im here to say that if you want to use ngrok with no hotspot, Use command 'termux-chroot' before using ngrok. it will work!"
+echo "To get your authtoken, please visit: https://ngrok.com"
+echo "Don't worry, it's free!"
 echo -e "\033[33mMade by Ron144#1491\033[0m"
