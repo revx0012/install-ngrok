@@ -26,6 +26,7 @@ elif [ "$ARCH" = "aarch64" ]; then
 elif [ "$ARCH" = "ppc64le" ]; then
   DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-ppc64le.tgz"
   NGROK_DIR="ngrok-v3-stable-linux-ppc64le"
+fi
 elif [ "$ARCH" = "s390x" ]; then
  DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-s390x.tgz"
   NGROK_DIR="ngrok-v3-stable-linux-s390x.tgz"
