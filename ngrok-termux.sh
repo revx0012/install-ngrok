@@ -27,7 +27,7 @@ fi
 
 clear
 echo "Installing the requirements..."
-pkg install tar resolv-conf proot -y &>/dev/null
+pkg install tar wget curl resolv-conf proot -y &>/dev/null
 clear
 
 while true; do
