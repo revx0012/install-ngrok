@@ -69,9 +69,9 @@ else
 fi
 
 # Download and install ngrok
-wget $DOWNLOAD_URL -O ngrok.zip
-unzip ngrok.zip
-sudo mv $NGROK_DIR/ngrok /bin
+wget $DOWNLOAD_URL -O ngrok.tgz
+tar -xf ngrok.tgz
+sudo mv ngrok /bin
 rm -rf ngrok.zip $NGROK_DIR
 
 echo "Ngrok has been successfully installed! Type 'ngrok' to use it."
